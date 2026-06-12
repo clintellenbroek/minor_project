@@ -23,17 +23,4 @@ public class EconomyManager : MonoBehaviour
     {
         waterLevel += amount;
     }
-
-
-    private void Update()
-    {
-        timeLeft -= Time.deltaTime;
-
-        if (timeLeft <= 0)
-        {
-            mood -= 5;
-            energy -= 5;
-            timeLeft = .3f;
-        }
-    }
 }
