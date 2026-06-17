@@ -15,16 +15,16 @@ public class PlayerController : MonoBehaviour
     public Transform playerParent;
     public Transform cameraPivot;
 
-    private Vector3 playerVelocity;
-    private bool groundedPlayer;
-
-    private float pitch = 0f;
-
     [Header("Input Actions")]
     public InputActionReference moveAction;
     public InputActionReference sprintAction;
     public InputActionReference jumpAction;
     public InputActionReference lookAction;
+
+    private Vector3 playerVelocity;
+    private bool groundedPlayer;
+    private float pitch = 0f;
+
 
     private void OnEnable()
     {
