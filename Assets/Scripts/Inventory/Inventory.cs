@@ -5,7 +5,6 @@ public class Inventory : MonoBehaviour
 {
 
     // Store items per slot
-    Dictionary<InventoryItem, int> inventory = new();
     InventorySlotHandler[] inventorySlots = new InventorySlotHandler[5];
 
     // Max slots for the inventory
@@ -57,42 +56,51 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public bool HasItem(InventoryItem item)
+    {
+        foreach (var slot in inventorySlots)
+        {
+            if (slot.selectedItem == item)
+                return true;
+        }
+        return false;
+    }
+
 
     public void AddItem(InventoryItem item, int amount)
     {
-        if (inventory.ContainsKey(item))
+        if (HasItem(item))
         {
-            inventory[item] = amount + inventory[item];
+            for (int i = 0; i < slots; i++)
+            {
+                if (inventorySlots[i].selectedItem == item)
+                {
+                    inventorySlots[i].SetItemCount(inventorySlots[i].itemCount + amount);
+                    break;
+                }
+            }
             return;
         }
 
-        if (inventory.Keys.Count < slots)
+        for (int i = 0; i < slots; i++)
         {
-            inventory.Add(item, amount);
-            for (int i = 0; i < slots; i++)
+            if (inventorySlots[i].selectedItem == null)
             {
-                if (inventorySlots[i].selectedItem == null)
-                {
-                    inventorySlots[i].SetItem(item);
-                    break;
-                }
+                inventorySlots[i].SetItem(item, amount);
+                break;
             }
         }
     }
 
     public void RemoveItem(InventoryItem item)
     {
-        if (inventory.ContainsKey(item))
+        for (int i = 0; i < slots; i++)
         {
-            for (int i = 0; i < slots; i++)
+            if (inventorySlots[i].selectedItem == item)
             {
-                if (inventorySlots[i].selectedItem == item)
-                {
-                    inventorySlots[i].UnsetItem();
-                    break;
-                }
+                inventorySlots[i].UnsetItem();
+                break;
             }
-            inventory.Remove(item);
         }
     }
 
@@ -104,23 +112,24 @@ public class Inventory : MonoBehaviour
      */
     public bool TakeItem(InventoryItem item, int amount)
     {
-        if (inventory.ContainsKey(item))
+        if (!HasItem(item))
+            return false;
+
+        for (int i = 0; i < slots; i++)
         {
-            if (inventory[item] >= amount)
+            if (inventorySlots[i].selectedItem == item)
             {
-                inventory[item] -= amount;
-                if (inventory[item] == 0)
+                if (inventorySlots[i].itemCount >= amount)
                 {
-                    RemoveItem(item);
+                    inventorySlots[i].SetItemCount(inventorySlots[i].itemCount - amount);
+                    if (inventorySlots[i].itemCount == 0)
+                    {
+                        RemoveItem(item);
+                    }
+                    return true;
                 }
-                return true;
             }
         }
         return false;
-    }
-
-    public int HasItem(InventoryItem item)
-    {
-        return inventory.ContainsKey(item) ? inventory[item] : 0;
     }
 }
