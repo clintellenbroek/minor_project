@@ -18,6 +18,14 @@ public class UIManager : MonoBehaviour
             {
                 GameObject uiElement = inputAction.uiElement;
                 uiElement.SetActive(!uiElement.activeSelf);
+
+                foreach (var element in inputAction.elementsToDisble)
+                {
+                    if (element != uiElement)
+                    {
+                        element.SetActive(!uiElement.activeSelf);
+                    }
+                }
             };
         }
     }
@@ -28,5 +36,6 @@ public class UIManager : MonoBehaviour
 public class UITogglers 
 {
     public InputAction inputAction;
+    public List<GameObject> elementsToDisble;
     public GameObject uiElement;
 }
