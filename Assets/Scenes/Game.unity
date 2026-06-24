@@ -17446,6 +17446,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d208bd038537c842bf9982b9d7ca19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiTogglers:
+  - inputAction:
+      m_Name: Input
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: f787e0eb-e60f-4b06-93e5-5a05a0190dd5
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: a258a1e3-5bde-4f12-acca-b7aaffccefac
+        m_Path: <Keyboard>/tab
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Input
+        m_Flags: 0
+      m_Flags: 0
+    uiElement: {fileID: 1473903169}
 --- !u!4 &471747409
 Transform:
   m_ObjectHideFlags: 0
