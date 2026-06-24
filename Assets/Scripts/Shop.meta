@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Shop.meta
 guid: 3031c97cc581aec43a654fee4c6a758f
+========
+guid: 438764fcecfd61f47ae516a98bef5e57
+>>>>>>>> main:Assets/Prefabs/UI.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
