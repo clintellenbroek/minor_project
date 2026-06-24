@@ -10,16 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 188c6dfe3f97faf419612ea15402935f, type: 3}
-  m_Name: ShowerSituation
+  m_Name: BrushTeethSituation
   m_EditorClassIdentifier: 
-  title: ShowerSituation
-  description: How long are you going to shower
+  title: BrushTeethSituation
+  description: Your brushing your teeth, did you keep the watter running the whole
+    time?
   choices:
-  - text: 1 Minute
+  - text: yes
     waterCost: 0
-  - text: 5 Minutes
-    waterCost: 0
-  - text: 10 Minutes
-    waterCost: 0
-  - text: 20 Minutes
+  - text: no
     waterCost: 0

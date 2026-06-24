@@ -10,16 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 188c6dfe3f97faf419612ea15402935f, type: 3}
-  m_Name: New Situation
+  m_Name: WateringPlantsSituation 1
   m_EditorClassIdentifier: 
-  title: 
-  description: 
+  title: WateringPlantsSituation
+  description: how many plants will you give water?
   choices:
-  - text: 
-    waterCost: 0
-  - text: 
-    waterCost: 0
-  - text: 
-    waterCost: 0
-  - text: 
-    waterCost: 0
+  - text: 1
+    waterCost: 0.1
+  - text: 2
+    waterCost: 0.2
+  - text: 5
+    waterCost: 0.5

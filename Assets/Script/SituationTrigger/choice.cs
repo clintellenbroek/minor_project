@@ -2,5 +2,5 @@
 public class Choice
 {
     public string text;
-    public int waterCost;
+    public double waterCost;
 }
