@@ -2,9 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-[CreateAssetMenu(fileName = "InventoryItem", menuName = "ScriptableObjects/InventoryItem")]
+[CreateAssetMenu(fileName = "InventoryItem", menuName = "Waterwise/InventoryItem")]
 public class InventoryItem : ScriptableObject
 {
     public string name;
-    public Image icon;
+    public Sprite icon;
 }

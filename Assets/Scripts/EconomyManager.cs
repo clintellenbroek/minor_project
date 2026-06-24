@@ -7,8 +7,6 @@ public class EconomyManager : MonoBehaviour
     public int energy = 100;
     public int waterLevel = 100;
 
-    float timeLeft = 0.3f;
-
     public void IncreaseMood(int amount)
     {
         mood += amount;

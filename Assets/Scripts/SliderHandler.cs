@@ -17,7 +17,7 @@ public class SliderHandler : MonoBehaviour
 
     private void Awake()
     {
-        field = economyManager.GetType().GetField("mood");
+        field = economyManager.GetType().GetField(propertyName);
     }
 
     public void Update()
