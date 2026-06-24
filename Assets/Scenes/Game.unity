@@ -8763,6 +8763,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5715414532996988671, guid: d7135f43252df6f4090a4afab3d92a2d, type: 3}
   m_PrefabInstance: {fileID: 235932760}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &238233158 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3273882606361770538, guid: 8ffd77dcd295704478981bbaf4b271ba, type: 3}
+  m_PrefabInstance: {fileID: 6173223851174610645}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &238346697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17412,6 +17417,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 725989081241285436, guid: 603621573a9b53c4a91cbf9907b58fa7, type: 3}
   m_PrefabInstance: {fileID: 465681632}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &471747407
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 471747409}
+  - component: {fileID: 471747408}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &471747408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471747407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d208bd038537c842bf9982b9d7ca19c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &471747409
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471747407}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 543.00073, y: 319.2893, z: -0.22616336}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &473441014
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55394,6 +55443,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4225597408632634685, guid: b733c8c65ec466748a8fa4364cfc7f95, type: 3}
   m_PrefabInstance: {fileID: 1472488580}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1473903169 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4860360798389633702, guid: 8ffd77dcd295704478981bbaf4b271ba, type: 3}
+  m_PrefabInstance: {fileID: 6173223851174610645}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1473903170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473903169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03328fdb5fcdb1e48941eba0c72fdcf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contentContainer: {fileID: 238233158}
+  shopItemPrefab: {fileID: 7314203715982531256, guid: 5acc68addbee2a94894e90f9ced0cb38, type: 3}
+  inventory: {fileID: 1593948901}
+  economyManager: {fileID: 1609673776}
+  shopItems:
+  - amount: 1
+    itemType: {fileID: 11400000, guid: d067771a5d147e149b6b5bf53d301efd, type: 2}
+    price: 10
+    currency: water
+    description: A quick snack to regain some quick energy and mood!
 --- !u!1001 &1473961391
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59767,6 +59843,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 255425945398950907, guid: 988d13dc5aa8a9241b517122f6dfc54c, type: 3}
   m_PrefabInstance: {fileID: 1593852140}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1593948901 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 348107851462832527, guid: f77f85a38adff78438df794366e8623f, type: 3}
+  m_PrefabInstance: {fileID: 1859241356}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7420ca540232ceb419a393c7ee2d643f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1595675859
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60311,6 +60398,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4006016134979642837, guid: 278759375cd7e8549ba762983539cfee, type: 3}
   m_PrefabInstance: {fileID: 1968142291}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1609673776 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4634544869013686193, guid: 650cb74257f61f941a5c75f5657ef49c, type: 3}
+  m_PrefabInstance: {fileID: 1337044671}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea991c24c0f506342ba02ae7f8c09fc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1609748538
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -78215,12 +78313,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4860360798389633702, guid: 8ffd77dcd295704478981bbaf4b271ba, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4860360798389633702, guid: 8ffd77dcd295704478981bbaf4b271ba, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1473903170}
   m_SourcePrefab: {fileID: 100100000, guid: 8ffd77dcd295704478981bbaf4b271ba, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -78231,6 +78332,7 @@ SceneRoots:
   - {fileID: 431840502}
   - {fileID: 1337044671}
   - {fileID: 1859241356}
+  - {fileID: 471747409}
   - {fileID: 1789020902}
   - {fileID: 844569411}
   - {fileID: 534072127}
