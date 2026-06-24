@@ -1,15 +1,31 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SituationTrigger : MonoBehaviour
 {
-    public List<Situation> situations;
+    public Situation situation;
 
-    public void TriggerSituation(int index)
+    private bool hasTriggered = false;
+
+    private void OnTriggerEnter(Collider other)
     {
-        Situation situation = situations[index];
+        if (hasTriggered) return;
 
-        Debug.Log(situation.title);
-        Debug.Log(situation.description);
+            hasTriggered = true;
+            TriggerSituation();
+
+    }
+
+    void TriggerSituation()
+    {
+        Debug.Log("Vraag: " + situation.title);
+        Debug.Log("Beschrijving: " + situation.description);
+
+        for (int i = 0; i < situation.choices.Length; i++)
+        {
+            Debug.Log(situation.choices[i].text + " kost " + situation.choices[i].waterCost + " water");
+        }
+
+        // Later kan je hier je UI openen:
+        // SituationUI.instance.ShowSituation(situation);
     }
 }

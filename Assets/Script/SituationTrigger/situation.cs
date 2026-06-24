@@ -1,7 +1,11 @@
-[System.Serializable]
-public class Situation
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "New Situation", menuName = "WaterWise/Situation")]
+public class Situation : ScriptableObject
 {
     public string title;
+    [TextArea]
     public string description;
-    public int waterCost;
+
+    public Choice[] choices = new Choice[4];
 }
