@@ -1,18 +1,45 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SituationTrigger : MonoBehaviour
 {
     public Situation situation;
+    public InputAction interactAction;
+    public GameObject interactPrompt; // sleep InteractPrompt hier naartoe in Inspector
 
     private bool hasTriggered = false;
+    private bool playerInRange = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (hasTriggered) return;
+        playerInRange = true;
+        interactPrompt.SetActive(true);
+    }
 
-            hasTriggered = true;
-            TriggerSituation();
+    private void OnTriggerExit(Collider other)
+    {
+        playerInRange = false;
+        interactPrompt.SetActive(false);
+    }
 
+    void OnEnable()
+    {
+        interactAction.Enable();
+        interactAction.performed += ctx =>
+        {
+            if (playerInRange && !hasTriggered)
+            {
+                hasTriggered = true;
+                interactPrompt.SetActive(false);
+                TriggerSituation();
+            }
+        };
+    }
+
+    void OnDisable()
+    {
+        interactAction.performed -= ctx => { };
+        interactAction.Disable();
     }
 
     void TriggerSituation()
@@ -24,8 +51,5 @@ public class SituationTrigger : MonoBehaviour
         {
             Debug.Log(situation.choices[i].text + " kost " + situation.choices[i].waterCost + " water");
         }
-
-        // Later kan je hier je UI openen:
-        // SituationUI.instance.ShowSituation(situation);
     }
 }
