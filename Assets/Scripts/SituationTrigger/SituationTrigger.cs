@@ -4,52 +4,38 @@ using UnityEngine.InputSystem;
 public class SituationTrigger : MonoBehaviour
 {
     public Situation situation;
-    public InputAction interactAction;
-    public GameObject interactPrompt; // sleep InteractPrompt hier naartoe in Inspector
+    public GameObject interactPrompt;
 
-    private bool hasTriggered = false;
+    // private bool hasTriggered = false;
     private bool playerInRange = false;
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.GetComponentInParent<PlayerController>() == null) return;
         playerInRange = true;
         interactPrompt.SetActive(true);
     }
 
     private void OnTriggerExit(Collider other)
     {
+        if (other.GetComponentInParent<PlayerController>() == null) return;
         playerInRange = false;
         interactPrompt.SetActive(false);
     }
 
-    void OnEnable()
+    void Update()
     {
-        interactAction.Enable();
-        interactAction.performed += ctx =>
+        // if (playerInRange && !hasTriggered && Keyboard.current.eKey.wasPressedThisFrame)
+        if (playerInRange && Keyboard.current.eKey.wasPressedThisFrame)
         {
-            if (playerInRange && !hasTriggered)
-            {
-                hasTriggered = true;
-                interactPrompt.SetActive(false);
-                TriggerSituation();
-            }
-        };
-    }
-
-    void OnDisable()
-    {
-        interactAction.performed -= ctx => { };
-        interactAction.Disable();
+            // hasTriggered = true;
+            interactPrompt.SetActive(false);
+            TriggerSituation();
+        }
     }
 
     void TriggerSituation()
     {
-        Debug.Log("Vraag: " + situation.title);
-        Debug.Log("Beschrijving: " + situation.description);
-
-        for (int i = 0; i < situation.choices.Length; i++)
-        {
-            Debug.Log(situation.choices[i].text + " kost " + situation.choices[i].waterCost + " water");
-        }
+        SituationUI.Instance.ShowSituation(situation);
     }
 }
