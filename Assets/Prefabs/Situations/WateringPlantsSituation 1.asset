@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 188c6dfe3f97faf419612ea15402935f, type: 3}
   m_Name: WateringPlantsSituation 1
   m_EditorClassIdentifier: 
-  title: WateringPlantsSituation
-  description: how many plants will you give water?
+  title: EatSituation
+  description: What are you going to eat.
   choices:
   - text: 1
     waterCost: 0.1
