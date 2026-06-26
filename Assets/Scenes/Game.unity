@@ -5318,8 +5318,10 @@ GameObject:
   m_Component:
   - component: {fileID: 116931290}
   - component: {fileID: 116931292}
-  - component: {fileID: 116931294}
+  - component: {fileID: 116931295}
   - component: {fileID: 116931293}
+  - component: {fileID: 116931294}
+  - component: {fileID: 116931296}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -5335,8 +5337,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 116931289}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15212336, y: 0.00000011032242, z: -0.000000029540681, w: 0.98836154}
-  m_LocalPosition: {x: 0, y: 2.351529, z: -4.768585}
+  m_LocalRotation: {x: 0.44678456, y: 0.13569261, z: -0.06876637, w: 0.8816135}
+  m_LocalPosition: {x: -2.0075073, y: 9.952942, z: -6.367035}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5424,10 +5426,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 116931289}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a076c17fe76165e4f8ed21498b877bf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Easing: 0
+  Modifiers: []
+  references:
+    version: 2
+    RefIds: []
+--- !u!114 &116931295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116931289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b5d7c088409d9a40b7b09aa707777f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetOffset: {x: 0, y: 0, z: 0}
+  TargetOffset: {x: 0, y: 7, z: 0}
   TrackerSettings:
     BindingMode: 4
     PositionDamping: {x: 1, y: 1, z: 1}
@@ -5435,7 +5454,7 @@ MonoBehaviour:
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
   OrbitStyle: 0
-  Radius: 5
+  Radius: 7
   Orbits:
     Top:
       Radius: 2
@@ -5447,9 +5466,9 @@ MonoBehaviour:
       Radius: 2.5
       Height: 0.1
     SplineCurvature: 0.5
-  RecenteringTarget: 2
+  RecenteringTarget: 0
   HorizontalAxis:
-    Value: 0
+    Value: 17.5
     Center: 0
     Range: {x: -180, y: 180}
     Wrap: 1
@@ -5478,6 +5497,58 @@ MonoBehaviour:
       Wait: 1
       Time: 2
     Restrictions: 0
+--- !u!114 &116931296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116931289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89875cdc57c54474a8a74efd9b2a3b5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScanRecursively: 1
+  SuppressInputWhileBlending: 1
+  IgnoreTimeScale: 0
+  m_ControllerManager:
+    Controllers:
+    - Name: Look Orbit X
+      Owner: {fileID: 116931295}
+      Enabled: 1
+      Input:
+        InputAction: {fileID: 1662175411}
+        Gain: 1
+        CancelDeltaTime: 0
+      InputValue: 0
+      Driver:
+        AccelTime: 0
+        DecelTime: 0
+    - Name: Look Orbit Y
+      Owner: {fileID: 116931295}
+      Enabled: 0
+      Input:
+        InputAction: {fileID: 0}
+        Gain: 1
+        CancelDeltaTime: 0
+      InputValue: 0
+      Driver:
+        AccelTime: 0
+        DecelTime: 0
+    - Name: Orbit Scale
+      Owner: {fileID: 116931295}
+      Enabled: 0
+      Input:
+        InputAction: {fileID: 0}
+        Gain: 1
+        CancelDeltaTime: 0
+      InputValue: 0
+      Driver:
+        AccelTime: 0
+        DecelTime: 0
+  PlayerIndex: -1
+  AutoEnableInputs: 1
 --- !u!1001 &116985209
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18475,9 +18546,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 466220404}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d208bd038537c842bf9982b9d7ca19c, type: 3}
+  m_Script: {fileID: 11500000, guid: 55cf8cf2abcb18b41a5b99e7bcaffc66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiTogglers: []
 --- !u!1001 &473441014
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22581,6 +22653,7 @@ GameObject:
   m_Component:
   - component: {fileID: 564879545}
   - component: {fileID: 564879547}
+  - component: {fileID: 564879548}
   m_Layer: 0
   m_Name: House
   m_TagString: Untagged
@@ -22633,6 +22706,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 7.3981323, y: 6.956458, z: 11.517639}
   m_Center: {x: 6.9780884, y: 2.9782286, z: -5.069214}
+--- !u!114 &564879548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564879544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db73934739d5f2e4a9dcaf1a66b30d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roof: {fileID: 550804974}
 --- !u!1 &565213221
 GameObject:
   m_ObjectHideFlags: 0
@@ -65501,6 +65587,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 441386, guid: ab5e0beb1c36778479983f28b65d97dd, type: 3}
   m_PrefabInstance: {fileID: 1659490749}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1662175411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: Player/Look
+  m_EditorClassIdentifier: 
+  m_Asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_ActionId: 6b444451-8a00-4d00-a97e-f47457f736a8
 --- !u!1001 &1664772323
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -75404,8 +75504,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1943587265}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15212336, y: 0.00000010834227, z: -0.000000016675466, w: 0.98836154}
-  m_LocalPosition: {x: 482.96, y: 2.577529, z: 474.7314}
+  m_LocalRotation: {x: 0.44678453, y: 0.13569261, z: -0.068766385, w: 0.8816135}
+  m_LocalPosition: {x: 480.95248, y: 10.178942, z: 473.13297}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
