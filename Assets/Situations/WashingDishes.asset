@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f6cef651d24be418b1eb249cb089a5, type: 3}
+  m_Name: WashingDishes
+  m_EditorClassIdentifier: 
+  title: How do you want to wash the dishes?
+  description: 
+  choices:
+  - text: Rinse off
+    waterCost: 8
+  - text: Normal
+    waterCost: 15
+  - text: Deep-Clean
+    waterCost: 25
