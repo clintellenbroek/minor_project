@@ -2,10 +2,17 @@ using UnityEngine;
 
 public class EconomyManager : MonoBehaviour
 {
+    public static EconomyManager Instance;
+
     [Header("Currencies")]
     public int mood = 100;
     public int energy = 100;
     public int waterLevel = 100;
+
+    void Awake()
+    {
+        Instance = this;
+    }
 
     public void IncreaseMood(int amount)
     {

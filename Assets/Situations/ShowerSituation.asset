@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0f6cef651d24be418b1eb249cb089a5, type: 3}
   m_Name: ShowerSituation
   m_EditorClassIdentifier: 
-  title: 
+  title: How long do you want to shower?
   description: 
   choices:
-  - text: 
-    waterCost: 0
-  - text: 
-    waterCost: 0
-  - text: 
-    waterCost: 0
-  - text: 
-    waterCost: 0
+  - text: 5 min
+    waterCost: 5
+  - text: 10 min
+    waterCost: 10
+  - text: 15 min
+    waterCost: 15
+  - text: 20 min
+    waterCost: 20
