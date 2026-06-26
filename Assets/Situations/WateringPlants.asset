@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0f6cef651d24be418b1eb249cb089a5, type: 3}
-  m_Name: WateringPlantsSituation
+  m_Name: WateringPlants
   m_EditorClassIdentifier: 
-  title: 
+  title: How much water do you want to use for the plants?
   description: 
   choices:
-  - text: 
-    waterCost: 0
-  - text: 
-    waterCost: 0
-  - text: 
-    waterCost: 0
-  - text: 
-    waterCost: 0
+  - text: 5 L
+    waterCost: 5
+  - text: 10 L
+    waterCost: 10
+  - text: 15 L
+    waterCost: 15
+  - text: 20 L
+    waterCost: 20
