@@ -1,5 +1,6 @@
 using System;
 using System.Reflection;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -10,10 +11,11 @@ public class SliderHandler : MonoBehaviour
     public Slider slider;
 
     public EconomyManager economyManager;
-    public String propertyName;
+    public string propertyName;
 
 
     private FieldInfo field;
+
 
     private void Awake()
     {
