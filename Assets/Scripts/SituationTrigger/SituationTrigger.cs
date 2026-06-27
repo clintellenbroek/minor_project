@@ -1,10 +1,16 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 
 public class SituationTrigger : MonoBehaviour
 {
     public Situation situation;
     public GameObject interactPrompt;
+
+    public AudioSource soundEffect;
+    public ParticleSystem particleEffect;
+    public float effectDuration = 3f;
 
     // private bool hasTriggered = false;
     private bool playerInRange = false;
@@ -36,6 +42,35 @@ public class SituationTrigger : MonoBehaviour
 
     void TriggerSituation()
     {
-        SituationUI.Instance.ShowSituation(situation);
+        SituationUI.Instance.ShowSituation(situation, this);
+    }
+
+    public void PlayEffects()
+    {
+        if (soundEffect != null)
+            soundEffect.Play();
+            StartCoroutine(StopAudioAfterDelay(effectDuration));
+
+        if (particleEffect != null)
+        {
+            particleEffect.Play();
+            StartCoroutine(StopParticlesAfterDelay(effectDuration));
+        }
+    }
+
+    IEnumerator StopParticlesAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (particleEffect != null)
+            particleEffect.Stop();
+    }
+
+    IEnumerator StopAudioAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (soundEffect != null)
+            soundEffect.Stop();
     }
 }
