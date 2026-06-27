@@ -23,3 +23,6 @@ MonoBehaviour:
     waterCost: 15
   - text: 20 min
     waterCost: 20
+  soundEffect: {fileID: 8300000, guid: 59e962aff43e0464fa0903b3b9ce1a92, type: 3}
+  visualEffectPrefab: {fileID: 0}
+  effectDuration: 3

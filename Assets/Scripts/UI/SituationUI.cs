@@ -12,6 +12,8 @@ public class SituationUI : MonoBehaviour
     public Transform choicesContainer;
     public GameObject choiceButtonPrefab;
 
+    private SituationTrigger currentTrigger;
+
     private System.Action onClose;
 
     void Awake()
@@ -26,8 +28,9 @@ public class SituationUI : MonoBehaviour
         panel.SetActive(false);
     }
 
-    public void ShowSituation(Situation situation, System.Action onClose = null)
+    public void ShowSituation(Situation situation, SituationTrigger trigger, System.Action onClose = null)
     {
+        currentTrigger = trigger;
         this.onClose = onClose;
         panel.SetActive(true);
         titleText.text = situation.title;
@@ -60,8 +63,18 @@ public class SituationUI : MonoBehaviour
     void OnChoiceSelected(int index, Choice choice)
     {
         panel.SetActive(false);
+
+        if (currentTrigger != null)
+            currentTrigger.PlayEffects();
+
         onClose?.Invoke();
     }
+
+    //void OnChoiceSelected(int index, Choice choice)
+    //{
+    //    panel.SetActive(false);
+    //    onClose?.Invoke();
+    //}
 
     public void ClosePanel()
     {
