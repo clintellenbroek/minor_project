@@ -52,6 +52,16 @@ public class EconomyManager : MonoBehaviour
     public void DecreaseEnergy(int amount)
     {
         energy = Mathf.Clamp(energy - amount, 0, 100);
+        Debug.Log($"[Economy] Energy decreased by {amount} → new total: {energy}");
+
+        if (energy <= 0)
+        {
+            Debug.Log("[Economy] Energy reached 0 → showing Game Over panel.");
+            if (DayOverUI.Instance != null)
+                DayOverUI.Instance.ShowPanel(isGameOver: true);  // Game over
+            else
+                Debug.LogError("DayOverUI.Instance is null!");
+        }
     }
 
     public void IncreaseWaterLevel(int amount)
