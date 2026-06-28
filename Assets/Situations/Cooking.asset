@@ -17,9 +17,13 @@ MonoBehaviour:
   choices:
   - text: Salad
     waterCost: 3
+    moodCost: -20
   - text: Chicken
     waterCost: 10
+    moodCost: 15
   - text: Cheese
     waterCost: 13
+    moodCost: -5
   - text: Beef
     waterCost: 20
+    moodCost: 15

@@ -17,9 +17,13 @@ MonoBehaviour:
   choices:
   - text: Water
     waterCost: 1
+    moodCost: -5
   - text: Lemonade
     waterCost: 3
+    moodCost: 5
   - text: Soda
     waterCost: 10
+    moodCost: 15
   - text: Coffe
     waterCost: 15
+    moodCost: 10
