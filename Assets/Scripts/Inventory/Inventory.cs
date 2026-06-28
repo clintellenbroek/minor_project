@@ -19,6 +19,9 @@ public class Inventory : MonoBehaviour
     private Keyboard keyboard = Keyboard.current;
 
     public InventoryItem starterItem;
+    public EconomyManager economyManager;
+
+    public InputAction useItemAction;
 
 
     public void Start()
@@ -32,6 +35,19 @@ public class Inventory : MonoBehaviour
         inventorySlots[0].Select();
 
         AddItem(starterItem, 1);
+        useItemAction.Enable();
+
+        useItemAction.performed += ctx =>
+        {
+            foreach (var slot in inventorySlots)
+            {
+                if (slot.IsSelected() && slot.selectedItem != null)
+                {
+                    slot.Use(economyManager);
+                    break;
+                }
+            }
+        };
     }
 
     public void Update()

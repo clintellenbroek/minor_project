@@ -7,4 +7,7 @@ public class InventoryItem : ScriptableObject
 {
     public string name;
     public Sprite icon;
+
+    public int energy;
+    public int mood;
 }
