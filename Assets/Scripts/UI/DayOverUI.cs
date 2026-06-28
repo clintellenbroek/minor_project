@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections;
 
 public class DayOverUI : MonoBehaviour
 {
@@ -20,7 +21,8 @@ public class DayOverUI : MonoBehaviour
 
     [Header("References")]
     public PlayerController playerController;
-
+    public Transform playerMesh;  
+    public Transform spawnPoint;
 
     private Vector3 playerStartPosition;
     private Quaternion playerStartRotation;
@@ -39,16 +41,6 @@ public class DayOverUI : MonoBehaviour
         if (returnToMenuButton == null) Debug.LogError("returnToMenuButton is not assigned!");
 
         dayOverPanel.SetActive(false);
-    }
-
-    void Start()
-    {
-        if (playerController != null)
-        {
-            playerStartPosition = playerController.transform.position;
-            playerStartRotation = playerController.transform.rotation;
-            Debug.Log($"[DayOverUI] Player start position saved: {playerStartPosition}");
-        }
     }
 
     public void ShowPanel(bool isGameOver, int daysSurvived = 0)
@@ -97,8 +89,6 @@ public class DayOverUI : MonoBehaviour
 
         totalWaterUsedTitle.text = "Total water used:";
         totalWaterUsedContentText.text = EconomyManager.Instance.totalWaterUsed + "L";
-
-        Debug.Log($"[DayOverUI] Panel opened — isGameOver: {isGameOver}");
     }
 
     public void ClosePanel()
@@ -109,28 +99,12 @@ public class DayOverUI : MonoBehaviour
             playerController.enabled = true;
 
         dayOverPanel.SetActive(false);
-        Debug.Log("[DayOverUI] Panel closed.");
-    }
-
-    private void ResetPlayer()
-    {
-        if (playerController == null) return;
-
-        CharacterController cc = playerController.GetComponent<CharacterController>();
-        if (cc != null) cc.enabled = false;
-
-        playerController.transform.position = playerStartPosition;
-        playerController.transform.rotation = playerStartRotation;
-
-        if (cc != null) cc.enabled = true;
-
-        Debug.Log("[DayOverUI] Player reset to original start position.");
     }
 
     public void OnNextDayButtonClicked()
     {
         EconomyManager.Instance.ResetDay();
-        ResetPlayer();
+        StartCoroutine(ResetPlayerCoroutine()); 
         
         // Tell DayCycleManager to start the next day
         DayCycleManager dayCycle = FindObjectOfType<DayCycleManager>();
@@ -145,7 +119,17 @@ public class DayOverUI : MonoBehaviour
     public void OnReturnToMenuButtonClicked()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
-        Debug.Log("[DayOverUI] Returning to main menu.");
     }
 
+    private IEnumerator ResetPlayerCoroutine()
+    {
+        if (spawnPoint == null) { Debug.LogError("[DayOverUI] spawnPoint is null!"); yield break; }
+
+        yield return null;
+
+        playerController.TeleportTo(spawnPoint.position, spawnPoint.rotation);
+
+        yield return null;
+
+    }
 }

@@ -50,7 +50,6 @@ public class SituationTrigger : MonoBehaviour
     public void ResetForNewDay()
     {
         hasTriggeredToday = false;
-        Debug.Log($"[SituationTrigger] '{situation.title}' reset for new day.");
     }
 
     public void PlayEffects()
