@@ -45,8 +45,9 @@ public class SituationUI : MonoBehaviour
         {
             var choice = situation.choices[i];
             GameObject btn = Instantiate(choiceButtonPrefab, choicesContainer);
+            string moodText = choice.moodCost.ToString("+#;-#;0");
             btn.GetComponentInChildren<TextMeshProUGUI>().text =
-                $"{choice.text} ({choice.waterCost} water)";
+                $"{choice.text}\nWater: {choice.waterCost} | Mood: {moodText}";
             int index = i;
             btn.GetComponent<Button>().onClick.AddListener(() =>
             {
@@ -57,6 +58,7 @@ public class SituationUI : MonoBehaviour
                 }
                 EconomyManager.Instance.IncreaseWaterLevel(-(int)choice.waterCost);
                 EconomyManager.Instance.IncreaseTotalWaterUsed((int)choice.waterCost);
+                EconomyManager.Instance.IncreaseMood((int)choice.moodCost);
                 EconomyManager.Instance.SaveChoice(situation.title, choice.text, choice.waterCost);
                 OnChoiceSelected(index, choice);
             });
