@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class EconomyManager : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class EconomyManager : MonoBehaviour
     public int mood = 100;
     public int energy = 100;
     public int waterLevel = 100;
+    public int totalWaterUsed = 0;
+
+    public Dictionary<string, (string choiceText, float waterCost)> savedChoices 
+            = new Dictionary<string, (string, float)>();
 
     public int energyDecreaseAmount = 1;
     public float energyDecreaseTime = 5f;
@@ -53,5 +58,14 @@ public class EconomyManager : MonoBehaviour
     {
         waterLevel = Mathf.Clamp(waterLevel + amount, 0, 100);
         //waterLevel += amount;
+    }
+    public void IncreaseTotalWaterUsed(int amount)
+    {
+        totalWaterUsed += amount;
+    }
+
+    public void SaveChoice(string situationTitle, string choiceText, double waterCost)
+    {
+        savedChoices[situationTitle] = (choiceText, (float) waterCost);
     }
 }

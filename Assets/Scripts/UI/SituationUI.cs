@@ -31,6 +31,7 @@ public class SituationUI : MonoBehaviour
     public void ShowSituation(Situation situation, SituationTrigger trigger, System.Action onClose = null)
     {
         currentTrigger = trigger;
+        string situationTitle = situation.title;
         this.onClose = onClose;
         panel.SetActive(true);
         titleText.text = situation.title;
@@ -55,6 +56,8 @@ public class SituationUI : MonoBehaviour
                     return;
                 }
                 EconomyManager.Instance.IncreaseWaterLevel(-(int)choice.waterCost);
+                EconomyManager.Instance.IncreaseTotalWaterUsed((int)choice.waterCost);
+                EconomyManager.Instance.SaveChoice(situation.title, choice.text, choice.waterCost);
                 OnChoiceSelected(index, choice);
             });
         }
