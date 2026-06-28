@@ -24,11 +24,15 @@ public class DayCycleManager : MonoBehaviour
         currentTime += Time.deltaTime;
 
         float normalizedTime = currentTime / dayDurationSeconds;
-        float sunAngle = (normalizedTime * 360f) - 90f;
+        //float sunAngle = (normalizedTime * 360f) - 90f;
+        float sunAngle = Mathf.Lerp(15f, 170f, normalizedTime);
         directionalLight.transform.rotation = Quaternion.Euler(sunAngle, -30f, 0f);
 
-        float intensity = Mathf.Clamp01(Mathf.Sin(normalizedTime * Mathf.PI * 2f) + 0.1f);
-        directionalLight.intensity = intensity * 2f;
+        //float intensity = Mathf.Clamp01(Mathf.Sin(normalizedTime * Mathf.PI * 2f) + 0.1f);
+        //directionalLight.intensity = intensity * 2f;
+
+        float intensity = Mathf.Lerp(2f, 0.2f, normalizedTime);
+        directionalLight.intensity = intensity;
 
         if (currentTime >= dayDurationSeconds)
         {
