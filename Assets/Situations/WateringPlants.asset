@@ -17,9 +17,13 @@ MonoBehaviour:
   choices:
   - text: 5 L
     waterCost: 5
+    moodCost: -10
   - text: 10 L
     waterCost: 10
+    moodCost: 10
   - text: 15 L
     waterCost: 15
+    moodCost: 10
   - text: 20 L
     waterCost: 20
+    moodCost: -10

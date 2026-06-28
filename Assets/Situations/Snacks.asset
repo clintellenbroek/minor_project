@@ -17,9 +17,13 @@ MonoBehaviour:
   choices:
   - text: Apple
     waterCost: 7
+    moodCost: -10
   - text: Potato Chips
     waterCost: 14
+    moodCost: 10
   - text: Snickers
     waterCost: 20
-  - text: Croissaint
+    moodCost: 20
+  - text: Croissant
     waterCost: 30
+    moodCost: 10
