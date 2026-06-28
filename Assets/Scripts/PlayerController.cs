@@ -110,4 +110,27 @@ public class PlayerController : MonoBehaviour
         // ===== ANIMATION =====
         animator.SetFloat("MoveSpeed", moveDirection.magnitude);
     }
+
+    public void TeleportTo(Vector3 position, Quaternion rotation)
+    {
+        controller.enabled = false;
+        playerVelocity = Vector3.zero;
+
+        Transform playerCharacter = controller.transform.parent;
+        playerCharacter.position = position;
+        playerCharacter.rotation = rotation;
+
+        // Reset local position of Player and FreeSample to zero
+        controller.transform.localPosition = Vector3.zero;
+        playerParent.localPosition = Vector3.zero;
+
+        Animator anim = GetComponentInChildren<Animator>();
+        if (anim != null)
+        {
+            anim.Rebind();
+            anim.Update(0f);
+        }
+
+        controller.enabled = true;
+    }
 }
