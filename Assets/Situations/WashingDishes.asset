@@ -17,7 +17,10 @@ MonoBehaviour:
   choices:
   - text: Rinse off
     waterCost: 8
+    moodCost: 5
   - text: Normal
     waterCost: 15
+    moodCost: 0
   - text: Deep-Clean
     waterCost: 25
+    moodCost: -10

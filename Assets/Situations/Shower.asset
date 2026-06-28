@@ -17,12 +17,13 @@ MonoBehaviour:
   choices:
   - text: 5 min
     waterCost: 5
+    moodCost: -10
   - text: 10 min
     waterCost: 10
+    moodCost: 0
   - text: 15 min
     waterCost: 15
+    moodCost: 5
   - text: 20 min
     waterCost: 20
-  soundEffect: {fileID: 8300000, guid: 59e962aff43e0464fa0903b3b9ce1a92, type: 3}
-  visualEffectPrefab: {fileID: 0}
-  effectDuration: 3
+    moodCost: 10
