@@ -3,27 +3,23 @@ using TMPro;
 
 public class DayCycleManager : MonoBehaviour
 {
-    [Header("Dag instellingen")]
+    [Header("Day Settings")]
     public float dayDurationSeconds = 120f;
     public Light directionalLight;
 
-    [Header("UI")]
-    public GameObject dayEndScreen;
-    public TextMeshProUGUI dayText;
-
     private float currentTime = 0f;
-    private int currentDay = 1;
+    public int currentDay = 1;
     private bool dayEnded = false;
 
     void Start()
     {
         currentTime = 0.25f * dayDurationSeconds;
-        dayEndScreen.SetActive(false);
     }
 
     void Update()
     {
         if (dayEnded) return;
+        if (EconomyManager.isPaused) return;
 
         currentTime += Time.deltaTime;
 
@@ -43,8 +39,13 @@ public class DayCycleManager : MonoBehaviour
     void EndDay()
     {
         dayEnded = true;
-        dayEndScreen.SetActive(true);
-        dayText.text = "Dag " + currentDay + " voorbij!";
+
+        if (DayOverUI.Instance != null)
+            DayOverUI.Instance.ShowPanel(isGameOver: false, daysSurvived: currentDay);
+        else
+            Debug.LogError("[DayCycleManager] DayOverUI.Instance is null!");
+
+        Debug.Log($"[DayCycleManager] Day {currentDay} ended.");
     }
 
     public void StartNextDay()
@@ -52,6 +53,20 @@ public class DayCycleManager : MonoBehaviour
         currentDay++;
         currentTime = 0.25f * dayDurationSeconds;
         dayEnded = false;
-        dayEndScreen.SetActive(false);
+
+        // Reset all situation triggers for the new day
+        SituationTrigger[] allTriggers = FindObjectsOfType<SituationTrigger>();
+        foreach (SituationTrigger trigger in allTriggers)
+        {
+            trigger.ResetForNewDay();
+        }
+
+        if (EconomyManager.Instance != null)
+            EconomyManager.Instance.ResetDay();
+
+        if (DayOverUI.Instance != null)
+            DayOverUI.Instance.ClosePanel();
+
+        Debug.Log($"[DayCycleManager] Day {currentDay} started — {allTriggers.Length} triggers reset.");
     }
 }
