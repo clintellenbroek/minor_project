@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class SituationUI : MonoBehaviour
 {
@@ -11,9 +12,10 @@ public class SituationUI : MonoBehaviour
     public TextMeshProUGUI titleText;
     public Transform choicesContainer;
     public GameObject choiceButtonPrefab;
+    public TextMeshProUGUI notEnoughWaterText;
 
     private SituationTrigger currentTrigger;
-
+    private Coroutine blinkCoroutine;
     private System.Action onClose;
 
     void Awake()
@@ -24,6 +26,7 @@ public class SituationUI : MonoBehaviour
         if (titleText == null) Debug.LogError("titleText is niet ingevuld!");
         if (choicesContainer == null) Debug.LogError("choicesContainer is niet ingevuld!");
         if (choiceButtonPrefab == null) Debug.LogError("choiceButtonPrefab is niet ingevuld!");
+        if (notEnoughWaterText != null) notEnoughWaterText.gameObject.SetActive(false);
 
         panel.SetActive(false);
     }
@@ -56,6 +59,20 @@ public class SituationUI : MonoBehaviour
                     Debug.LogError("EconomyManager.Instance is null!");
                     return;
                 }
+ 
+            if (EconomyManager.Instance.waterLevel < (int)choice.waterCost)
+            {
+                Debug.Log($"[SituationUI] Not enough water! Need {choice.waterCost}, have {EconomyManager.Instance.waterLevel}");
+                notEnoughWaterText.text = $"Not enough water! You need {choice.waterCost}L but only have {EconomyManager.Instance.waterLevel}L left.";
+
+                // Stop previous blink if still running
+                if (blinkCoroutine != null)
+                    StopCoroutine(blinkCoroutine);
+
+                blinkCoroutine = StartCoroutine(BlinkText(duration: 2f, blinkSpeed: 0.3f));
+                return;
+            }
+
                 EconomyManager.Instance.IncreaseWaterLevel(-(int)choice.waterCost);
                 EconomyManager.Instance.IncreaseTotalWaterUsed((int)choice.waterCost);
                 EconomyManager.Instance.IncreaseMood((int)choice.moodCost);
@@ -80,6 +97,24 @@ public class SituationUI : MonoBehaviour
     //    panel.SetActive(false);
     //    onClose?.Invoke();
     //}
+
+    IEnumerator BlinkText(float duration, float blinkSpeed = 0.3f)
+    {
+        float elapsed = 0f;
+        notEnoughWaterText.gameObject.SetActive(true);
+
+        while (elapsed < duration)
+        {
+            notEnoughWaterText.enabled = !notEnoughWaterText.enabled; // Toggle visibility
+            yield return new WaitForSeconds(blinkSpeed);
+            elapsed += blinkSpeed;
+        }
+
+        // Make sure text is hidden after blinking
+        notEnoughWaterText.enabled = true;
+        notEnoughWaterText.gameObject.SetActive(false);
+        blinkCoroutine = null;
+    }
 
     public void ClosePanel()
     {
