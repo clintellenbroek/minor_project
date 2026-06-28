@@ -9866,17 +9866,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3211764349628563310, guid: b05d5fc29469c584686677880f93dcc8, type: 3}
   m_PrefabInstance: {fileID: 229220103}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &229936223 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3830586329750198532, guid: f2a595954eff2a14989b26d8bde0ef6f, type: 3}
-  m_PrefabInstance: {fileID: 1530373599}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &232335774
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17656,7 +17645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab35095605eefb74dad6bd05c343fc1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayDurationSeconds: 120
+  dayDurationSeconds: 600
   directionalLight: {fileID: 410087040}
   currentDay: 1
 --- !u!1001 &433052520
@@ -25636,7 +25625,7 @@ MonoBehaviour:
   titleText: {fileID: 2087603739}
   choicesContainer: {fileID: 50951669}
   choiceButtonPrefab: {fileID: 4752167531885555625, guid: d4eae4eb4b7f0e14897186032539fb6b, type: 3}
-  notEnoughWaterText: {fileID: 229936223}
+  notEnoughWaterText: {fileID: 0}
 --- !u!1001 &612489160
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76462,6 +76451,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 348107851462832527, guid: f77f85a38adff78438df794366e8623f, type: 3}
+      propertyPath: economyManager
+      value: 
+      objectReference: {fileID: 1219314253}
+    - target: {fileID: 348107851462832527, guid: f77f85a38adff78438df794366e8623f, type: 3}
       propertyPath: inventoryHolder
       value: 
       objectReference: {fileID: 1206210479}
@@ -76469,6 +76462,26 @@ PrefabInstance:
       propertyPath: InventorySlotPrefab
       value: 
       objectReference: {fileID: 5627145462248823231, guid: 745b84ae84cdaca4daafcd7e58ccd4fd, type: 3}
+    - target: {fileID: 348107851462832527, guid: f77f85a38adff78438df794366e8623f, type: 3}
+      propertyPath: useItemAction.m_Name
+      value: Use Item
+      objectReference: {fileID: 0}
+    - target: {fileID: 348107851462832527, guid: f77f85a38adff78438df794366e8623f, type: 3}
+      propertyPath: useItemAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 348107851462832527, guid: f77f85a38adff78438df794366e8623f, type: 3}
+      propertyPath: useItemAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 30154f5c-6191-424b-8dd5-c26eab6d2bbd
+      objectReference: {fileID: 0}
+    - target: {fileID: 348107851462832527, guid: f77f85a38adff78438df794366e8623f, type: 3}
+      propertyPath: useItemAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Mouse>/rightButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 348107851462832527, guid: f77f85a38adff78438df794366e8623f, type: 3}
+      propertyPath: useItemAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Use Item
+      objectReference: {fileID: 0}
     - target: {fileID: 5556182915467084553, guid: f77f85a38adff78438df794366e8623f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 599.5468
@@ -87177,7 +87190,32 @@ MonoBehaviour:
   shopItemPrefab: {fileID: 7314203715982531256, guid: 5acc68addbee2a94894e90f9ced0cb38, type: 3}
   inventory: {fileID: 697757398}
   economyManager: {fileID: 1219314253}
-  shopItems: []
+  shopItems:
+  - amount: 1
+    itemType: {fileID: 11400000, guid: 913112e477c23a24097e4be42f43927f, type: 2}
+    price: 15
+    currency: water
+    description: A quick sugary drink to replenish some energy and mood
+  - amount: 1
+    itemType: {fileID: 11400000, guid: 2a4d69c3838a4f8458712ed841548f04, type: 2}
+    price: 15
+    currency: water
+    description: A bottle of water
+  - amount: 1
+    itemType: {fileID: 11400000, guid: 35586ef1648993543a2428a714d87f96, type: 2}
+    price: 10
+    currency: water
+    description: A good looking apple is always good for your energy and mood
+  - amount: 1
+    itemType: {fileID: 11400000, guid: 599950adf63a73f428c01076cf98f93f, type: 2}
+    price: 7
+    currency: water
+    description: A quick sweet snack to help regain some energy and mood
+  - amount: 1
+    itemType: {fileID: 11400000, guid: 04174a8bebcd5634bae1a80068bb9335, type: 2}
+    price: 5
+    currency: water
+    description: A small cookie to give a little mood and energy back
 --- !u!1001 &5896299801572876805
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeb7590306d713a4aaf55685df62a34c, type: 3}
   m_Name: Cookie
   m_EditorClassIdentifier: 
-  name: Cooki
+  name: Cookie
   icon: {fileID: 21300000, guid: 7b6d3c433893d5f42a834c96076573d4, type: 3}
   energy: 5
   mood: 5

@@ -50,4 +50,20 @@ public class InventorySlotHandler : MonoBehaviour
     {
         selectedGameObject.SetActive(false);
     }
+
+    public bool IsSelected()
+    {
+        return selectedGameObject.activeSelf;
+    }
+
+    public void Use(EconomyManager eco)
+    {
+        eco.mood = Mathf.Clamp(eco.mood + selectedItem.mood, 0, 100);
+        eco.energy = Mathf.Clamp(eco.energy + selectedItem.energy, 0, 100);
+        SetItemCount(itemCount - 1);
+        if (itemCount <= 0)
+        {
+            UnsetItem();
+        }
+    }
 }
