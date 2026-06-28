@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 
 public class SituationTrigger : MonoBehaviour
@@ -12,14 +11,17 @@ public class SituationTrigger : MonoBehaviour
     public ParticleSystem particleEffect;
     public float effectDuration = 3f;
 
-    // private bool hasTriggered = false;
     private bool playerInRange = false;
+    private bool hasTriggeredToday = false; // Tracks if already triggered this day
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponentInParent<PlayerController>() == null) return;
         playerInRange = true;
-        interactPrompt.SetActive(true);
+
+        // Only show prompt if not yet triggered today
+        if (!hasTriggeredToday)
+            interactPrompt.SetActive(true);
     }
 
     private void OnTriggerExit(Collider other)
@@ -31,10 +33,9 @@ public class SituationTrigger : MonoBehaviour
 
     void Update()
     {
-        // if (playerInRange && !hasTriggered && Keyboard.current.eKey.wasPressedThisFrame)
-        if (playerInRange && Keyboard.current.eKey.wasPressedThisFrame)
+        if (playerInRange && !hasTriggeredToday && Keyboard.current.eKey.wasPressedThisFrame)
         {
-            // hasTriggered = true;
+            hasTriggeredToday = true;
             interactPrompt.SetActive(false);
             TriggerSituation();
         }
@@ -45,11 +46,20 @@ public class SituationTrigger : MonoBehaviour
         SituationUI.Instance.ShowSituation(situation, this);
     }
 
+    // Called by DayCycleManager at the start of each new day
+    public void ResetForNewDay()
+    {
+        hasTriggeredToday = false;
+        Debug.Log($"[SituationTrigger] '{situation.title}' reset for new day.");
+    }
+
     public void PlayEffects()
     {
         if (soundEffect != null)
+        {
             soundEffect.Play();
             StartCoroutine(StopAudioAfterDelay(effectDuration));
+        }
 
         if (particleEffect != null)
         {
@@ -61,7 +71,6 @@ public class SituationTrigger : MonoBehaviour
     IEnumerator StopParticlesAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-
         if (particleEffect != null)
             particleEffect.Stop();
     }
@@ -69,7 +78,6 @@ public class SituationTrigger : MonoBehaviour
     IEnumerator StopAudioAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-
         if (soundEffect != null)
             soundEffect.Stop();
     }
