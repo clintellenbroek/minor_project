@@ -22,6 +22,7 @@ public class EconomyManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
+        isPaused = false;
     }
 
     private void Start()
